@@ -160,6 +160,31 @@
     margin-top:10px;
   }
 
+  .gallery{margin-top:28px; display:flex; flex-direction:column; gap:14px;}
+  .shot-pair{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:760px){ .shot-pair{grid-template-columns:1fr;} }
+  figure.shot{
+    margin:0;
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    background:#000;
+  }
+  figure.shot img{
+    width:100%;
+    display:block;
+    background:#000;
+  }
+  figure.shot.shot-wide img{max-height:420px; object-fit:contain; margin:0 auto;}
+  .shot-pair figure.shot img{max-height:260px; object-fit:contain; width:100%;}
+  figure.shot figcaption{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    padding:10px 14px;
+    border-top:1px solid var(--line);
+  }
+
   .skills-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
   @media (max-width:760px){.skills-grid{grid-template-columns:repeat(2,1fr);}}
   .skillcat h4{
@@ -230,24 +255,31 @@
       </div>
     </div>
 
-    <div class="diagram">
-      <svg viewBox="0 0 700 160" xmlns="http://www.w3.org/2000/svg" width="100%">
-        <rect x="20" y="20" width="660" height="120" rx="4" fill="none" stroke="#2a323d" stroke-width="1"/>
-        <rect x="60" y="40" width="60" height="80" fill="#4FD1C5" opacity="0.75"/>
-        <rect x="140" y="40" width="60" height="80" fill="#E8A33D" opacity="0.75"/>
-        <rect x="220" y="40" width="60" height="80" fill="#D8569B" opacity="0.75"/>
-        <rect x="300" y="40" width="60" height="80" fill="#4FD1C5" opacity="0.45"/>
-        <rect x="380" y="40" width="60" height="80" fill="#E8A33D" opacity="0.45"/>
-        <rect x="460" y="40" width="60" height="80" fill="#D8569B" opacity="0.45"/>
-        <line x1="540" y1="80" x2="640" y2="80" stroke="#3a4452" stroke-width="2" stroke-dasharray="4 4"/>
-        <text x="60" y="135" fill="#8A93A1" font-family="IBM Plex Mono" font-size="10">INV</text>
-        <text x="140" y="135" fill="#8A93A1" font-family="IBM Plex Mono" font-size="10">NAND2</text>
-        <text x="220" y="135" fill="#8A93A1" font-family="IBM Plex Mono" font-size="10">NOR2</text>
-        <text x="300" y="135" fill="#8A93A1" font-family="IBM Plex Mono" font-size="10">NAND3</text>
-        <text x="380" y="135" fill="#8A93A1" font-family="IBM Plex Mono" font-size="10">XOR2</text>
-        <text x="460" y="135" fill="#8A93A1" font-family="IBM Plex Mono" font-size="10">AOI22</text>
-      </svg>
-      <div class="cap">// Schematic abstraction of the standard-cell library — not an actual layout export</div>
+    <div class="gallery">
+      <figure class="shot shot-wide">
+        <img src="img/layout.png" alt="Complete chip layout in Cadence Virtuoso">
+        <figcaption>Complete physical layout — Cadence Virtuoso, GF65 PDK</figcaption>
+      </figure>
+      <div class="shot-pair">
+        <figure class="shot">
+          <img src="img/drc.png" alt="Calibre DRC results showing no violations">
+          <figcaption>Calibre DRC — 0 violations</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="img/lvs.png" alt="Calibre LVS report showing CORRECT result">
+          <figcaption>Calibre LVS — CORRECT</figcaption>
+        </figure>
+      </div>
+      <div class="shot-pair">
+        <figure class="shot">
+          <img src="img/primetime.png" alt="PrimeTime power analysis report">
+          <figcaption>PrimeTime power analysis — ~69.3 µW total</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="img/waveform.png" alt="Post-layout simulation waveform">
+          <figcaption>Post-layout simulation waveform</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
